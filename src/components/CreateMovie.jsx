@@ -29,76 +29,69 @@ export default function CreateMovie() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Add New Movie</h1>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <h1 className="text-3xl font-bold mb-6" data-testid="create-movie-title">Add New Movie</h1>
+      <form onSubmit={handleSubmit} className="space-y-6" data-testid="create-movie-form">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Title
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Title</label>
           <input
             type="text"
             value={movie.title}
             onChange={(e) => setMovie({ ...movie, title: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+            data-testid="movie-title-input"
             required
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Description
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Description</label>
           <textarea
             value={movie.description}
             onChange={(e) => setMovie({ ...movie, description: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
             rows="4"
+            data-testid="movie-description-input"
             required
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Genre
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Genre</label>
           <input
             type="text"
             value={movie.genre}
             onChange={(e) => setMovie({ ...movie, genre: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+            data-testid="movie-genre-input"
             required
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Director
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Director</label>
           <input
             type="text"
             value={movie.director}
             onChange={(e) => setMovie({ ...movie, director: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+            data-testid="movie-director-input"
             required
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Actors (comma-separated)
-          </label>
+          <label className="block text-sm font-medium text-gray-700">Actors</label>
           <input
             type="text"
             value={movie.actors.join(', ')}
-            onChange={(e) =>
-              setMovie({
-                ...movie,
-                actors: e.target.value.split(',').map((actor) => actor.trim())
-              })
-            }
+            onChange={(e) => setMovie({
+              ...movie,
+              actors: e.target.value.split(',').map(actor => actor.trim())
+            })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+            data-testid="movie-actors-input"
           />
         </div>
         <button
           type="submit"
           className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          disabled={createMovieMutation.isLoading}
+          data-testid="submit-movie"
         >
           Create Movie
         </button>
